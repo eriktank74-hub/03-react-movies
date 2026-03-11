@@ -23,7 +23,7 @@ function App() {
       setShowError(false);
     } catch (error) {
       console.log(error);
-      setShowError(true);
+      setShowError(true)
       setMovies([]);
     } finally {
       setIsLoading(false);
@@ -31,10 +31,10 @@ function App() {
   };
   const onSelect = (movie: Movie) => {
     setSelectedMovie(movie);
-  };
+  }
   const onClose = () => {
     setSelectedMovie(null);
-  };
+  }
   useEffect(() => {
     if (selectedMovie) {
       document.body.classList.add(css.noScrolling);
