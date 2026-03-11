@@ -10,9 +10,6 @@ import { useState } from "react";
 import type { Movie } from "../../types/movie";
 import { useEffect } from "react";
 
-
-
-
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [showError, setShowError] = useState<boolean>(false);
@@ -36,15 +33,15 @@ function App() {
     setSelectedMovie(movie);
   };
   const onClose = () => {
-    setSelectedMovie(null)
+    setSelectedMovie(null);
   };
   useEffect(() => {
     if (selectedMovie) {
-        document.body.classList.add(css.noScrolling)
-    }else{
-        document.body.classList.remove(css.noScrolling)
+      document.body.classList.add(css.noScrolling);
+    } else {
+      document.body.classList.remove(css.noScrolling);
     }
-  },[selectedMovie])
+  }, [selectedMovie]);
   return (
     <div className={css.app}>
       <SearchBar onSubmit={onSubmit} />
@@ -56,10 +53,7 @@ function App() {
       ) : (
         <MovieGrid onSelect={onSelect} movies={movies} />
       )}
-    {
-      selectedMovie && <MovieModal movie={selectedMovie} onClose={onClose}/> 
-    }
-      
+      {selectedMovie && <MovieModal movie={selectedMovie} onClose={onClose} />}
     </div>
   );
 }
