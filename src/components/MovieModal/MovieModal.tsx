@@ -19,7 +19,17 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
     };
+  }, [onClose]);
+
+  useEffect(() => {
+    
+  document.body.style.overflow = 'hidden';
+      
+    return () => {
+      document.body.style.overflow = 'initial';
+    }
   }, []);
+
   return createPortal(
     <div
       className={css.backdrop}
@@ -36,7 +46,7 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
           &times;
         </button>
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
           alt={movie.title}
           className={css.image}
         />
